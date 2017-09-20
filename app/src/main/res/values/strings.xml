@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Popular Movies</string>
+
+    <string name="error_Message">Sorry an error accured while loading. Please! check your network connection then tray again later</string>
+</resources>
