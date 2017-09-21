@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="140dp"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        >
+        <ImageView
+            android:id="@+id/movie_img"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:padding="5dp"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/movie_image_poster"
+            />
+        <ProgressBar
+            android:id="@+id/image_load"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center"
+            />
+    </FrameLayout>
+
+        <TextView
+            android:padding="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/movie_original_title"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:textColor="@color/colorPrimary">
+        </TextView>
+
+</LinearLayout>

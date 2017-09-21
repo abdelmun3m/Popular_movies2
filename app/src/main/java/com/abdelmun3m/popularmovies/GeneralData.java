@@ -1,11 +1,7 @@
-package com.abdelmun3m.popular_movies;
+package com.abdelmun3m.popularmovies;
 
 
-/**
- * Created by abdelmun3m on 18/09/17.
- */
-
-public class General_Data {
+public class GeneralData {
 
     public static final String API_KEY = "a26b061467611fb1fc2dabf560a402c6";
     public static final String MOVIE_API_URL  = "https://api.themoviedb.org/3/";
@@ -16,7 +12,7 @@ public class General_Data {
     public static final String QUERY_LANGUAGE = "language";
     public static final String DEFAULT_LANG   = "en-US";
     public static final String QUERY_PAGE  = "page";
-    public static int PAGE_NUMBER = 1;
+    public static String PAGE_NUMBER = "1,2";
     public static final String IMAGE_URL = "http://image.tmdb.org/t/p/w185/";
     public static final String  TAG= "PouplarMovies";
 

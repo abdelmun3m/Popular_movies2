@@ -1,4 +1,4 @@
-package com.abdelmun3m.popular_movies;
+package com.abdelmun3m.popularmovies;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -9,10 +9,10 @@ import android.widget.TextView;
 
 public class MovieDetails extends AppCompatActivity {
 
-    Movie CurrentMovie = null;
-    ImageView poster ;
-    TextView originaltitle,overView, voteAverage,releadeDate ;
-    ProgressBar pb_load;
+    private Movie CurrentMovie = null;
+    private ImageView poster ;
+    private TextView originaltitle,overView, voteAverage,releadeDate ;
+    private ProgressBar pb_load;
 
 
 
@@ -23,8 +23,8 @@ public class MovieDetails extends AppCompatActivity {
         setContentView(R.layout.activity_movie_details);
 
         Intent in = getIntent();
-        if(in.hasExtra(General_Data.INTENT_TAG)){
-            CurrentMovie = in.getParcelableExtra(General_Data.INTENT_TAG);
+        if(in.hasExtra(GeneralData.INTENT_TAG)){
+            CurrentMovie = in.getParcelableExtra(GeneralData.INTENT_TAG);
         }
 
         if(CurrentMovie != null){
@@ -38,7 +38,7 @@ public class MovieDetails extends AppCompatActivity {
             originaltitle.setText(CurrentMovie.OriginallTitle);
             CurrentMovie.loadMovieImage(poster,pb_load);
             releadeDate.setText(CurrentMovie.RelaseDate);
-            voteAverage.setText(""+CurrentMovie.Vote_Average);
+            voteAverage.setText(String.valueOf(CurrentMovie.Vote_Average));
             overView.setText(CurrentMovie.Overview);
         }
 

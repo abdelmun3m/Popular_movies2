@@ -1,13 +1,14 @@
-package com.abdelmun3m.popular_movies;
+package com.abdelmun3m.popularmovies;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -16,18 +17,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONException;
-import com.abdelmun3m.popular_movies.MoviewRecyclerView.*;
+import com.abdelmun3m.popularmovies.MoviewRecyclerView.*;
 import java.net.URL;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements MoviesAdapter.MovieClick ,View.OnClickListener{
 
-    RecyclerView mRecyclerView ;
-    MoviesAdapter mAdapter;
-    TextView errorTextView;
-    ProgressBar mLoadingProgres;
-    TextView popular,top_sorted;
-    AsyncTask<URL, Void, List<Movie>> load ;
+    private RecyclerView mRecyclerView ;
+   private MoviesAdapter mAdapter;
+  private   TextView errorTextView;
+    private  ProgressBar mLoadingProgres;
+    private TextView popular,topRated;
+    private AsyncTask<URL, Void, List<Movie>> load ;
+    private static final int  PopularListSelection = 2;
+    private static final int  TopRatedListSelection = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,14 +41,14 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Mov
         errorTextView = (TextView) findViewById(R.id.tv_ErrorMessage);
         mLoadingProgres=(ProgressBar) findViewById(R.id.pb_loading);
         popular = (TextView) findViewById(R.id.tv_popular);
-        top_sorted = (TextView) findViewById(R.id.tv_top_sorted);
+        topRated = (TextView) findViewById(R.id.tv_top_rated);
         popular.setOnClickListener(this);
-        top_sorted.setOnClickListener(this);
-        LinearLayoutManager manger = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
-        mRecyclerView.setLayoutManager(manger);
+        topRated.setOnClickListener(this);
+        GridLayoutManager manager =new GridLayoutManager(this,1,LinearLayoutManager.HORIZONTAL,false);
+        mRecyclerView.setLayoutManager(manager);
         mRecyclerView.setHasFixedSize(true);
 
-        LoadMovies(1);
+        LoadMovies(TopRatedListSelection);
     }
 
     private void LoadMovies(int sortType) {
@@ -55,25 +58,25 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Mov
             showMoviesList();
             mAdapter = new MoviesAdapter(this);
             mRecyclerView.setAdapter(mAdapter);
-            URL murl= Movie_API.Build_Sorted_Movies_URL(sortType);
+            URL murl= MovieAPI.Build_Sorted_Movies_URL(sortType);
             if(load == null){
                 load =  new MoviesLoadtask().execute(murl);
             }
         }else{
-            Toast.makeText(this, "no network", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,""+getString(R.string.network_error), Toast.LENGTH_SHORT).show();
             showErrorMessage();
         }
     }
 
 
-    public void changeTextColors(int i){
-        if(i == 1){
-            top_sorted.setTextColor(Color.parseColor("#01d277"));
-            popular.setTextColor(Color.parseColor("#081c24"));
+    private void changeTextColors(int i){
+        if(i == TopRatedListSelection){
+            topRated.setTextColor(ContextCompat.getColor(this,R.color.colorPrimaryDark));
+            popular.setTextColor(ContextCompat.getColor(this,R.color.colorPrimary));
         }
-        else if(i==2){
-            popular.setTextColor(Color.parseColor("#01d277"));
-            top_sorted.setTextColor(Color.parseColor("#081c24"));
+        else if(i==PopularListSelection){
+            popular.setTextColor(ContextCompat.getColor(this,R.color.colorPrimaryDark));
+            topRated.setTextColor(ContextCompat.getColor(this,R.color.colorPrimary));
         }
     }
 
@@ -87,16 +90,16 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Mov
                 load = null;
             }
 
-            LoadMovies(2);
+            LoadMovies(PopularListSelection);
 
-        }else if(item == top_sorted.getId()){
+        }else if(item == topRated.getId()){
             if(load!=null){
                 load.cancel(true);
                 load = null;
             }
 
 
-            LoadMovies(1);
+            LoadMovies(TopRatedListSelection);
         }
     }
 
@@ -116,13 +119,13 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Mov
     public void onMovieClick(Movie m) {
         if(m != null){
             Intent in = new Intent(MainActivity.this,MovieDetails.class);
-            in.putExtra(General_Data.INTENT_TAG,m);
+            in.putExtra(GeneralData.INTENT_TAG,m);
             startActivity(in);
         }
     }
 
 
-    public boolean NetworkConnectivityAvilable(){
+    private boolean NetworkConnectivityAvilable(){
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo info =  cm.getActiveNetworkInfo();
         return info != null && info.isConnectedOrConnecting();
@@ -131,8 +134,12 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Mov
     /**
      *
      * movies Load
+     *
+     *
      * **/
-    public class MoviesLoadtask extends AsyncTask<URL,Void,List<Movie>>{
+
+    private class MoviesLoadtask extends AsyncTask<URL,Void,List<Movie>> {
+
 
         @Override
         protected void onPreExecute() {
@@ -144,14 +151,14 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Mov
         @Override
         protected List<Movie> doInBackground(URL... params) {
 
-           String response = Movie_API.get_Response(params[0]);
+            String response = MovieAPI.get_Response(params[0]);
 
             if(response == null || response.equals("")){
                 return null;
             }
 
             try {
-               return Movie_API.getListOfMovies(response);
+                return MovieAPI.getListOfMovies(response);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -170,6 +177,7 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Mov
             }
         }
     }
+
 
 
 }

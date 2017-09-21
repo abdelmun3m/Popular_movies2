@@ -1,5 +1,16 @@
 <resources>
     <string name="app_name">Popular Movies</string>
 
-    <string name="error_Message">Sorry an error accured while loading. Please! check your network connection then tray again later</string>
+    <string name="error_Message">Sorry an error accured while loading.
+        Please! check your network connection then tray again later</string>
+
+    <string name="network_error">No Network Connection Available ! Please Check your Connection</string>
+
+    <string name="top_rated">Top Rated</string>
+    <string name="popular">Popular</string>
+    <string name="release_date">Release Date</string>
+    <string name="vote_average">Vote Average</string>
+    <string name="overview">OverView</string>
+    <string name="movie_api_library_logo">Movie API Library logo</string>
+    <string name="movie_image_poster">Movie Image poster</string>
 </resources>

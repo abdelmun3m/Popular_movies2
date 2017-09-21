@@ -1,4 +1,4 @@
-package com.abdelmun3m.popular_movies;
+package com.abdelmun3m.popularmovies;
 
 import android.net.Uri;
 import android.util.Log;
@@ -15,39 +15,25 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-/**
- * Created by abdelmun3m on 18/09/17.
- */
-
-public class Movie_API {
+public class MovieAPI {
 
 
-    private static final String TAG = General_Data.TAG+":"+Movie_API.class.getSimpleName();
+    private static final String TAG = GeneralData.TAG+":"+MovieAPI.class.getSimpleName();
 
 
 
 
     public static URL Build_Sorted_Movies_URL(int SortType){
 
-            /**
-             * return the URL of the movies according sort type
-             * if 1 --> return Top Rated sort movies url
-             * if 2---> return pupular sort movies url
-             * else return null;
-             *
-             *
-             * general URL form
-             * https://api.themoviedb.org/3/movie/(popular/topRated)?api_key=<<api_key>>&language=en-US&page=1
-             * **/
 
         String sort_URI;
-        if(SortType == 1){sort_URI = General_Data.TOP_RATED_MOVIES_URL;}
-        else if(SortType == 2){sort_URI = General_Data.POPULAR_MOVIES_URL;}
+        if(SortType == 1){sort_URI = GeneralData.TOP_RATED_MOVIES_URL;}
+        else if(SortType == 2){sort_URI = GeneralData.POPULAR_MOVIES_URL;}
         else{sort_URI = null;}
         Uri uri = Uri.parse(sort_URI).buildUpon()
-                .appendQueryParameter(General_Data.QUERY_API_KEY,General_Data.API_KEY)
-                .appendQueryParameter(General_Data.QUERY_LANGUAGE,General_Data.DEFAULT_LANG)
-                .appendQueryParameter(General_Data.QUERY_PAGE,String.valueOf(General_Data.PAGE_NUMBER))
+                .appendQueryParameter(GeneralData.QUERY_API_KEY, GeneralData.API_KEY)
+                .appendQueryParameter(GeneralData.QUERY_LANGUAGE, GeneralData.DEFAULT_LANG)
+                .appendQueryParameter(GeneralData.QUERY_PAGE,GeneralData.PAGE_NUMBER)
                 .build();
 
         URL url = null;
@@ -57,7 +43,7 @@ public class Movie_API {
             e.printStackTrace();
         }
 
-        Log.i(TAG,"Builed URL : "+ url.toString());
+        Log.i(TAG,"Builed URL : "+ (url != null ? url.toString() : null));
         return url;
     }
 
@@ -83,6 +69,7 @@ public class Movie_API {
         } catch (IOException e) {
             e.printStackTrace();
         }finally {
+            assert connection != null;
             connection.disconnect();
         }
         return null;
@@ -94,16 +81,16 @@ public class Movie_API {
         List<Movie> ListOfMovies = new ArrayList<>();
         JSONObject jsonResult= new JSONObject(Result);
 
-        JSONArray results = jsonResult.getJSONArray(General_Data.Json_Result);
+        JSONArray results = jsonResult.getJSONArray(GeneralData.Json_Result);
         for (int i = 0; i <results.length() ; i++) {
             JSONObject JsonMovie = results.getJSONObject(i);
             Movie temp = new Movie();
-            temp.Movie_Id = JsonMovie.getInt(General_Data.Json_MOVIE_id);
-            temp.PosterImage = JsonMovie.getString(General_Data.Json_MOVIE_POSTER_IMAGE);
-            temp.OriginallTitle = JsonMovie.getString(General_Data.Json_MOVIE_ORIGINAL_TITLE);
-            temp.Overview = JsonMovie.getString(General_Data.Json_MOVIE_OVERVIEW);
-            temp.RelaseDate = JsonMovie.getString(General_Data.Json_MOVIE_RELEASE_DATE);
-            temp.Vote_Average = JsonMovie.getLong(General_Data.Json_MOVIE_VOTE_AVERAGE);
+            temp.Movie_Id = JsonMovie.getInt(GeneralData.Json_MOVIE_id);
+            temp.PosterImage = JsonMovie.getString(GeneralData.Json_MOVIE_POSTER_IMAGE);
+            temp.OriginallTitle = JsonMovie.getString(GeneralData.Json_MOVIE_ORIGINAL_TITLE);
+            temp.Overview = JsonMovie.getString(GeneralData.Json_MOVIE_OVERVIEW);
+            temp.RelaseDate = JsonMovie.getString(GeneralData.Json_MOVIE_RELEASE_DATE);
+            temp.Vote_Average = JsonMovie.getLong(GeneralData.Json_MOVIE_VOTE_AVERAGE);
             ListOfMovies.add(temp);
         }
         return ListOfMovies;

@@ -1,4 +1,4 @@
-package com.abdelmun3m.popular_movies.MoviewRecyclerView;
+package com.abdelmun3m.popularmovies.MoviewRecyclerView;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,21 +8,17 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.abdelmun3m.popular_movies.Movie;
-import com.abdelmun3m.popular_movies.R;
+import com.abdelmun3m.popularmovies.Movie;
+import com.abdelmun3m.popularmovies.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by abdelmun3m on 18/09/17.
- */
-
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesViewHolder>{
 
 
-    List<Movie> MovieList = new ArrayList<>();
-    MovieClick movieClick =null;
+    private List<Movie> MovieList = new ArrayList<>();
+    private MovieClick movieClick =null;
 
     public MoviesAdapter(MovieClick c){
         this.movieClick = c;
