@@ -8,7 +8,7 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="wrap_content"
         >
         <ImageView
             android:id="@+id/movie_img"
@@ -24,6 +24,7 @@
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_gravity="center"
+            android:visibility="visible"
             />
     </FrameLayout>
 

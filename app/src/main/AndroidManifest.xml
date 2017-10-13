@@ -23,6 +23,15 @@
             </intent-filter>
         </activity>
         <activity android:name="com.abdelmun3m.popularmovies.MovieDetails"></activity>
+
+        <provider
+            android:authorities="com.abdelmun3m.popularmovies"
+            android:name="com.abdelmun3m.popularmovies.MoviesProvider.MoviesContentProvider"
+            android:exported="false"
+            />
+        <service android:name=".FavoriteMovieIntentTask.FavoriteMovieService"
+            android:exported="false"
+            />
     </application>
 
 </manifest>

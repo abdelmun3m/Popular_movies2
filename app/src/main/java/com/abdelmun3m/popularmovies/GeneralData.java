@@ -1,6 +1,8 @@
 package com.abdelmun3m.popularmovies;
 
 
+import android.util.Log;
+
 public class GeneralData {
 
     public static final String API_KEY = "a26b061467611fb1fc2dabf560a402c6";
@@ -15,7 +17,6 @@ public class GeneralData {
     public static String PAGE_NUMBER = "1,2";
     public static final String IMAGE_URL = "http://image.tmdb.org/t/p/w185/";
     public static final String  TAG= "PouplarMovies";
-
     public static final String Json_Result  = "results";
     public static final String Json_MOVIE_id  = "id";
     public static final String Json_MOVIE_OVERVIEW  = "overview";
@@ -23,8 +24,13 @@ public class GeneralData {
     public static final String Json_MOVIE_RELEASE_DATE  = "release_date";
     public static final String Json_MOVIE_POSTER_IMAGE  = "poster_path";
     public static final String Json_MOVIE_VOTE_AVERAGE  = "vote_average";
+    public static final String Json_MOVIE_TRAILER_KEY  = "key";
     public static final String INTENT_TAG = "Selected_Movie";
+    public static final String YOUTUBE_MOVIE = "https://www.youtube.com/watch?v=";
 
 
+    public static void mylog(String s){
+        Log.w(TAG,s);
+    }
 
 }

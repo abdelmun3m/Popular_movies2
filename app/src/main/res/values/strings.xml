@@ -5,6 +5,7 @@
         Please! check your network connection then tray again later</string>
 
     <string name="network_error">No Network Connection Available ! Please Check your Connection</string>
+    <string name="favorit_error">No Favorite movies</string>
 
     <string name="top_rated">Top Rated</string>
     <string name="popular">Popular</string>
@@ -13,4 +14,8 @@
     <string name="overview">OverView</string>
     <string name="movie_api_library_logo">Movie API Library logo</string>
     <string name="movie_image_poster">Movie Image poster</string>
+    <string name="trailerID">Trailer %1$s </string>
+    <string name="review_error">No Reviews</string>
+    <string name="reviews">Reviews</string>
+
 </resources>

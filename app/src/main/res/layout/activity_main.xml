@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.abdelmun3m.popularmovies.MainActivity">
+    tools:context="com.abdelmun3m.popularmovies.MainActivity"
+    android:fillViewport="true"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
         <LinearLayout
             android:id="@+id/search_Layout"
             android:orientation="horizontal"
@@ -36,12 +37,11 @@
             android:layout_marginBottom="10dp"
             android:orientation="horizontal"
             android:padding="5dp"
-            android:divider="@color/colorPrimaryDark"
             >
             <TextView
                 android:id="@+id/tv_top_rated"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:text="@string/top_rated"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -52,10 +52,21 @@
             <TextView
                 android:id="@+id/tv_popular"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:text="@string/popular"
                 android:layout_weight="1"
-                android:gravity="start|center"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                />
+            <TextView
+                android:id="@+id/tv_favorit_movies"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Favorite"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:textColor="@color/colorPrimary"
@@ -63,13 +74,13 @@
         </LinearLayout>
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="300dp"
             android:id="@+id/frame"
             android:layout_margin="10dp"
             >
             <android.support.v7.widget.RecyclerView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:id="@+id/rv_moviesView"
                 android:visibility="visible"
                 android:layout_gravity="center"
@@ -94,9 +105,9 @@
                 />
         </FrameLayout>
         <LinearLayout
+            android:id="@+id/logo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/logo"
             android:orientation="horizontal"
             android:background="@color/colorPrimary"
             android:padding="5dp"
