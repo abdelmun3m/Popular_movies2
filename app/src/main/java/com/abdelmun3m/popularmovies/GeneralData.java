@@ -5,7 +5,7 @@ import android.util.Log;
 
 public class GeneralData {
 
-    public static final String API_KEY = "";//insert your API Key
+    public static final String API_KEY = "a26b061467611fb1fc2dabf560a402c6";
     public static final String MOVIE_API_URL  = "https://api.themoviedb.org/3/";
     public static final String GENERAL_MOVIES_URL  = MOVIE_API_URL+"movie/";
     public static final String POPULAR_MOVIES_URL  = GENERAL_MOVIES_URL+"popular";

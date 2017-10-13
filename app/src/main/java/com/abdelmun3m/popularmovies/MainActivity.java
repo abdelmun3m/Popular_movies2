@@ -84,7 +84,6 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Mov
     }
 
     private void ChangeIndicatorVisibility(boolean visible){
-
         if(visible){
             mLoadingProgres.setVisibility(View.VISIBLE);
         }else {
@@ -125,7 +124,6 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Mov
             showErrorMessage(ERROR_EMPTY_FAVORITE_MOVIES);
         }
         currentSortSelection = FAVORITE_MOVIES_SELECTION;
-        Toast.makeText(this, ""+query.getCount(), Toast.LENGTH_SHORT).show();
     }
 
     private void changeTextColors(int i){
@@ -195,10 +193,6 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Mov
             startActivity(in);
         }
     }
-
-
-
-
     @Override
     public Loader<List<Movie>> onCreateLoader(int id, Bundle args) {
         return new AsyncTaskLoader<List<Movie>>(this) {
@@ -249,6 +243,7 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Mov
             mAdapter.UpdateListOfMovies(data);
             showMoviesList();
         }else {
+            Toast.makeText(this, "e", Toast.LENGTH_SHORT).show();
             showErrorMessage(ERROR_LOADING_ERROR);
         }
     }

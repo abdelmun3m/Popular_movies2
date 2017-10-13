@@ -41,6 +41,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesView
                 myList.add(movie);
             }
         }
+        mCursorData.close();
         UpdateListOfMovies(myList);
     }
 

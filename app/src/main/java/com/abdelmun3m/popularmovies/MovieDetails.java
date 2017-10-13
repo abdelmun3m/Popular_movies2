@@ -16,8 +16,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.abdelmun3m.popularmovies.FavoriteMovieIntentTask.FavoriteMovieService;
 import com.abdelmun3m.popularmovies.MoviesProvider.*;
 import com.abdelmun3m.popularmovies.FavoriteMovieIntentTask.FavoriteMovieTasks;
@@ -188,11 +186,11 @@ public class MovieDetails extends AppCompatActivity implements TrailerRecyclerVi
     public long getMovieDbId(String id){
         Uri uri = MoviesContract.FavoriteMoviesEntity.BuildMovieUriWithId(id);
         Cursor query = getContentResolver().query(uri, null, null, null, null);
-      //  Toast.makeText(this, ""+query.getCount(), Toast.LENGTH_SHORT).show();
        if (query.getCount() <= 0) return -1;
         query.moveToFirst();
+        long aLong = query.getLong(MoviesContract.FavoriteMoviesEntity.INDEX_COLUMN_MOVIE_DB_ID);
         query.close();
-        return query.getLong(MoviesContract.FavoriteMoviesEntity.INDEX_COLUMN_MOVIE_DB_ID);
+        return aLong;
     }
 
     private void IntentDeleteFavoriteMovie() {
