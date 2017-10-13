@@ -2,7 +2,6 @@ package com.abdelmun3m.popularmovies;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;

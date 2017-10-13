@@ -4,8 +4,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.abdelmun3m.popularmovies.FavoriteMovieIntentTask.FavoriteMovieTasks;
-
 /**
  * Created by abdelmun3m on 05/10/17.
  */

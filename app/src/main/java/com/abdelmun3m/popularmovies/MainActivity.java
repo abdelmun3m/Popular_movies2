@@ -1,11 +1,7 @@
 package com.abdelmun3m.popularmovies;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.database.Cursor;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.AsyncTaskLoader;
@@ -76,7 +72,6 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Mov
     }
 
     private void setLayoutManager(){
-     //   checkScreenSize();
         GridLayoutManager manager =new GridLayoutManager(this, SCREEN_SIZE,LinearLayoutManager.HORIZONTAL,false);
         mRecyclerView.setLayoutManager(manager);
         mRecyclerView.setHasFixedSize(true);
@@ -103,10 +98,6 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Mov
             mAdapter = new MoviesAdapter(this);
             mRecyclerView.setAdapter(mAdapter);
             currentSortSelection = sortType;
-            /***
-             *
-             * using Loaders
-             * **/
             if(!restart){
                 GeneralData.mylog("intiaLoader");
                 getSupportLoaderManager().initLoader(ActivityLoaderID,null,this);
@@ -210,7 +201,6 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Mov
 
     @Override
     public Loader<List<Movie>> onCreateLoader(int id, Bundle args) {
-
         return new AsyncTaskLoader<List<Movie>>(this) {
             List<Movie> cashMovies;
             @Override
@@ -268,15 +258,6 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Mov
         GeneralData.mylog("Loader restarted");
     }
 
-    public void checkScreenSize(){
-        int size = getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK;
-        if(size == Configuration.SCREENLAYOUT_SIZE_LARGE || size ==Configuration.SCREENLAYOUT_SIZE_XLARGE || size == Configuration.SCREENLAYOUT_SIZE_NORMAL){
-            SCREEN_SIZE = 2;
-        }else {
-            SCREEN_SIZE = 1;
-
-        }
-    }
     private class MoviesLoadtask extends AsyncTask<URL,Void,List<Movie>> {
         @Override
         protected void onPreExecute() {

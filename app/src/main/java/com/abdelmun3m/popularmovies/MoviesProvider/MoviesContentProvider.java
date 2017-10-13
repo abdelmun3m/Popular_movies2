@@ -10,9 +10,6 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import com.abdelmun3m.popularmovies.GeneralData;
-import com.abdelmun3m.popularmovies.Movie;
-
 /**
  * Created by abdelmun3m on 05/10/17.
  */

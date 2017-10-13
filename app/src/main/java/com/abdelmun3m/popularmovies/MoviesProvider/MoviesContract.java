@@ -3,7 +3,6 @@ package com.abdelmun3m.popularmovies.MoviesProvider;
 import android.net.Uri;
 import android.provider.BaseColumns;
 
-import java.net.URL;
 
 /**
  * Created by abdelmun3m on 05/10/17.

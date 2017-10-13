@@ -121,7 +121,6 @@ public class MovieDetails extends AppCompatActivity implements TrailerRecyclerVi
     }
     @Override
     public void onTrailerClieck(String url) {
-        GeneralData.mylog(url);
         openWebPage(url);
     }
 
@@ -192,6 +191,7 @@ public class MovieDetails extends AppCompatActivity implements TrailerRecyclerVi
       //  Toast.makeText(this, ""+query.getCount(), Toast.LENGTH_SHORT).show();
        if (query.getCount() <= 0) return -1;
         query.moveToFirst();
+        query.close();
         return query.getLong(MoviesContract.FavoriteMoviesEntity.INDEX_COLUMN_MOVIE_DB_ID);
     }
 
@@ -211,10 +211,6 @@ public class MovieDetails extends AppCompatActivity implements TrailerRecyclerVi
 
 
     private class ReviewLoadtask extends AsyncTask<Void,Void,List<Review>> {
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
 
         @Override
         protected List<Review> doInBackground(Void... params) {
@@ -238,7 +234,6 @@ public class MovieDetails extends AppCompatActivity implements TrailerRecyclerVi
             if(reviews != null){
                 if(reviews.size() > 0){
                     rAdapter.updateReviews(reviews);
-                Toast.makeText(MovieDetails.this, ""+reviews.size(), Toast.LENGTH_SHORT).show();
                    mReviewRecyclerView.setVisibility(View.VISIBLE);
                    reviewError.setVisibility(View.INVISIBLE);
                 }else{

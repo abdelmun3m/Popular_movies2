@@ -9,8 +9,6 @@ import android.widget.TextView;
 import com.abdelmun3m.popularmovies.GeneralData;
 import com.abdelmun3m.popularmovies.R;
 
-import java.net.URL;
-import java.util.List;
 
 /**
  * Created by abdelmun3m on 08/10/17.

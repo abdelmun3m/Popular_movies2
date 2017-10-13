@@ -16,8 +16,6 @@ import com.abdelmun3m.popularmovies.R;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
-
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesViewHolder>{
 
 

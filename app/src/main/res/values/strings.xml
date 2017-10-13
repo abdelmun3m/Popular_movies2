@@ -17,5 +17,6 @@
     <string name="trailerID">Trailer %1$s </string>
     <string name="review_error">No Reviews</string>
     <string name="reviews">Reviews</string>
+    <string name="favorite">Favorite</string>
 
 </resources>

@@ -64,7 +64,7 @@
                 android:id="@+id/tv_favorit_movies"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Favorite"
+                android:text="@string/favorite"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:textSize="20sp"

@@ -2,7 +2,6 @@ package com.abdelmun3m.popularmovies.FavoriteMovieIntentTask;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
 import android.net.Uri;
 
 import com.abdelmun3m.popularmovies.GeneralData;
